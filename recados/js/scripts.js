@@ -33,23 +33,7 @@ async function fetchMessages() {
 
 fetchMessages()
 
-async function createNewMessage() {
-  const newMessage = {
-    title: 'Estudar Axios',
-    description: '2h por dia',
-    user_id: 1
-  }
 
-  try {
-    const response = await api.post('/notes', newMessage)
-
-    if (response.status === 201) {
-      alert('Recado cadastrado com sucesso!')
-    }
-  } catch (error) {
-    console.log('Erro ao cadastrar recado', error)
-  }
-}
 
 // createNewMessage()
 

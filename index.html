@@ -27,7 +27,7 @@
     <button type="submit">Enviar</button>
   </form> -->
 
-  <!-- <form>
+  <form>
     <fieldset>
       <legend>Informações pessoais</legend>
 
@@ -60,10 +60,22 @@
       <label for="">Tênis</label>
     </fieldset>
 
-    
-  </form> -->
+    <select name="cidade" id="cidade">
+      <option value="">Selecione uma cidade</option>
+      <option value="sp">São Paulo</option>
+      <option value="ssa">Salvador</option>
+      <option value="rj">Rio de Janeiro</option>
+    </select>
+
+    <textarea id="messagem" name="mensagem" rows="5" cols="50"></textarea>
+
+    <label for="nome_usuario">Nome</label>
+    <input id="nome_usuario" type="text" />
+
+    <button>Cadastrar</button>
+  </form>
   
-  <form id="interessesForm">
+  <!-- <form id="interessesForm">
     <fieldset>
       <legend>Interesses</legend>
 
@@ -104,6 +116,6 @@
       padding: 10px 0;
       display: block;
     }
-  </style>
+  </style> -->
 </body>
 </html>
