@@ -1,42 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listagem de Recados</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap"
-    rel="stylesheet">
-
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Document</title>
 </head>
-
 <body>
-  <div class="container">
-    <header class="header">
-      <img class="logo" src="./images/logo.svg" alt="">
+  <!-- <form>
+    <label for="nome">Nome:</label>
+    <input required id="nome" type="email" placeholder="carla@gmail.com" disabled />
 
-      <h1 class="title">Lista de Recados</h1>
-      <h2 class="subtitle">Todos os meus recados</h2>
-    </header>
+    <label for="senha">Senha:</label>
+    <input required type="password" id="senha" maxlength="5"/>
 
-    <main>
-      <div class="messages-list">
-        <div class="card">
-          <h2 class="card-title">Fazer compras</h2>
-          <p class="card-description">preciso passar no mercado e fazer minhas compras</p>
-        </div>
-      </div>
-    </main>
-  </div>
+    <label for="idade">Sua idade:</label>
+    <input type="number" id="idade" />
 
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/scripts.js"></script>
+    <label for="curriculo">Currículo:</label>
+    <input type="file" id="curriculo" />
+
+    <label for="cor-favorita">Cor favorita:</label>
+    <input type="color" id="cor-favorita" />
+
+    <input type="hidden" id="id" />
+
+    <button type="submit">Enviar</button>
+  </form> -->
+
+  <!-- <form>
+    <fieldset>
+      <legend>Informações pessoais</legend>
+
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome">
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email">
+    </fieldset>
+
+    <fieldset>
+      <legend>Endereço</legend>
+
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco">
+
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade">
+    </fieldset>
+
+    <fieldset>
+      <legend>Esporte favorito</legend>
+      <input type="radio" name="esporte" />
+      <label for="">Futebol</label>
+
+      <input type="radio" name="esporte" checked />
+      <label for="">Basquete</label>
+
+      <input type="radio" name="esporte" />
+      <label for="">Tênis</label>
+    </fieldset>
+
+    
+  </form> -->
+  
+  <form id="interessesForm">
+    <fieldset>
+      <legend>Interesses</legend>
+
+      <input id="esporte" type="checkbox" name="interesses" />
+      <label for="esporte">Esporte</label>
+
+      <input id="tecnologia" type="checkbox" name="interesses" />
+      <label for="tecnologia">Tecnologia</label>
+    </fieldset>
+
+    <span>Escolha pelo menos um interesse</span>
+
+    <button type="submit">Enviar</button>
+  </form>
+  <script>
+    const form = document.getElementById('interessesForm')
+    const span = document.querySelector('span')
+
+    form.addEventListener('submit', (event) => {
+      const checkboxes = document.querySelectorAll('input[name="interesses"]:checked')
+      console.log(checkboxes)
+
+      if (checkboxes.length === 0) {
+        event.preventDefault()
+
+        span.classList.add('error')
+      }
+    })
+  </script>
+
+  <style>
+    span {
+      display: none;
+    }
+
+    .error {
+      color: red;
+      padding: 10px 0;
+      display: block;
+    }
+  </style>
 </body>
-
 </html>
