@@ -52,3 +52,40 @@ async function createNewMessage() {
 }
 
 // createNewMessage()
+
+async function updateMessage() {
+  const editMessage = {
+    title: 'Novo Título',
+    description: 'Uma descrição legal'
+  }
+
+  try {
+    const idMessage = 156
+    const response = await api.put(`/notes/${idMessage}`, editMessage)
+
+    if(response.status === 200) {
+      alert('Recado atualizado com sucesso!')
+    }
+  }catch (error) {
+    console.log('Erro ao atualizar recado.')
+  }
+}
+
+// updateMessage()
+
+async function deleteMessage() {
+  const idMessage = 109
+
+  try {
+    const response = await api.delete(`/notes/${idMessage}`)
+
+    if (response.status === 200) {
+      alert('Recado exclído com sucesso')
+    }
+
+  } catch (error) {
+    console.log('Erro ao excluir recado', error)
+  }
+}
+// deleteMessage()
+// fetchMessages()
