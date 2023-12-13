@@ -8,10 +8,16 @@ formNewMessage.addEventListener('submit', (event) => {
   const titleValue = titleInput.value
   const descriptionValue = descriptionInput.value
 
+  const userId = localStorage.getItem('userId')
+
+  if (!userId) {
+    alert('Você precisa fazer login para cadastrar um recado.')
+  }
+
   const newMessage = {
     title: titleValue,
     description: descriptionValue,
-    user_id: 1
+    userId
   }
 
   createNewMessage(newMessage)
@@ -27,7 +33,7 @@ async function createNewMessage(message) {
       titleInput.value = ""
       descriptionInput.value = ""
 
-      location.href = "index.html"
+      location.href = "listar-recados.html"
     }
   } catch (error) {
     console.log('Erro ao cadastrar recado', error)

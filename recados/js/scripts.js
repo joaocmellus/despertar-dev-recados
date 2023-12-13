@@ -2,8 +2,16 @@ const messagesContainer = document.querySelector('.messages-list')
 
 async function fetchMessages() {
   try {
-    const response = await api.get('/notes')
-    const messages = response.data
+    const userId = localStorage.getItem('userId')
+
+    if (!userId) {
+      alert("Você precisa fazer login para visualizar os recados.")
+
+      return
+    }
+
+    const response = await api.get(`/notes/${userId}`)
+    const messages = response.data.userMessages
 
     console.log(messages)
 

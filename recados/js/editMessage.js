@@ -9,7 +9,7 @@ console.log(messageId)
 
 async function populateEditForm() {
   try {
-    const response = await api.get(`/notes/${messageId}`)
+    const response = await api.get(`/notes/list/${messageId}`)
     const message = response.data
 
     titleInput.value = message.title
@@ -44,7 +44,7 @@ async function updateMessage(messageId, editMessage) {
       alert('Recado atualizado com sucesso!')
     }
 
-    location.href = "index.html"
+    location.href = "listar-recados.html"
   } catch (error) {
     console.log('Erro ao atualizar recado.')
   }
