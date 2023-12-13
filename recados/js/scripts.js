@@ -1,6 +1,13 @@
 const messagesContainer = document.querySelector('.messages-list')
 
-async function fetchMessages() {
+const prevPage = document.getElementById('prevPage')
+const nextPage = document.getElementById('nextPage')
+
+// Variáveis globais
+let currentPage = 1
+let totalPages = 1
+
+async function fetchMessages(page) {
   try {
     const userId = localStorage.getItem('userId')
 
@@ -10,10 +17,17 @@ async function fetchMessages() {
       return
     }
 
-    const response = await api.get(`/notes/${userId}`)
+    const params = {
+      page,
+      perPage: 3
+    }
+
+    const response = await api.get(`/notes/${userId}`, { params })
     const messages = response.data.userMessages
 
     console.log(messages)
+
+    totalPages = response.data.totalPages
 
     messagesContainer.innerHTML = ''
 
@@ -58,9 +72,22 @@ async function fetchMessages() {
   }
 }
 
-fetchMessages()
+fetchMessages(currentPage)
 
 function navigateToEditPage(messageId) {
   location.href = `editar-recado.html?id=${messageId}`
 }
 
+prevPage.addEventListener('click', () => {
+  if (currentPage > 1) {
+    currentPage--
+    fetchMessages(currentPage)
+  }
+})
+
+nextPage.addEventListener('click', () => {
+  if (currentPage < totalPages) {
+    currentPage++;
+    fetchMessages(currentPage)
+  }
+})
