@@ -191,3 +191,28 @@ a {
 .card-icons i:hover {
   opacity: 0.7;
 }
+
+/* Estilo para a div de paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 3rem;
+}
+
+/* Estilo para os botões de página */
+.pagination button {
+  background-color: #087F5B;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Estilo para o botão de página ativa */
+.pagination button.active {
+  background-color: #0a936a;
+}
