@@ -1,4 +1,4 @@
-const messagesContainer = document.querySelector('.messages-list')
+const messagesContainer = document.querySelector('#messages-list')
 
 const prevPage = document.getElementById('prevPage')
 const nextPage = document.getElementById('nextPage')
@@ -36,17 +36,23 @@ async function fetchMessages(page) {
       messageCard.classList.add('card')
 
       messageCard.innerHTML = `
-        <h2 class="card-title">${message.title}</h2>
-        <p class="card-description">${message.description}</p>
-        <div class="card-icons">
-          <i class="fas fa-solid fa-trash" data-id=${message.id}></i>
-          <i class="fas fa-regular fa-edit" data-id=${message.id}></i>
+        <div class="card" style="width: 30rem; max-width: 100%;">
+          <div class="card-body">
+            <h2>${message.title}</h2>
+            <p class="card-text text-secondary">
+              ${message.description}
+            </p>
+            <div class="col d-flex gap-2 ">
+              <i class="bi bi-trash text-danger fs-5 " data-id="${message.id}" style="cursor: pointer;"></i>
+              <i class="bi bi-pencil-square text-success fs-5" data-id="${message.id}" style="cursor: pointer;"></i>
+            </div>
+          </div>
         </div>
       `
 
       messagesContainer.appendChild(messageCard)
 
-      const deleteIcon = messageCard.querySelector('.fa-trash')
+      const deleteIcon = messageCard.querySelector('.bi-trash')
 
       deleteIcon.addEventListener('click', () => {
         const messageId = deleteIcon.getAttribute('data-id')
@@ -54,7 +60,7 @@ async function fetchMessages(page) {
         deleteMessage(messageId)
       })
 
-      const editIcon = messageCard.querySelector('.fa-edit')
+      const editIcon = messageCard.querySelector('.bi-pencil-square')
       editIcon.addEventListener('click', () => {
         const messageId = editIcon.getAttribute('data-id')
 
