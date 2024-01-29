@@ -36,7 +36,7 @@ async function fetchMessages(page) {
       messageCard.classList.add('card')
 
       messageCard.innerHTML = `
-        <div class="card" style="width: 30rem; max-width: 100%;">
+        <div class="card" style="width: 30rem; max-width: 90vw;">
           <div class="card-body">
             <h2>${message.title}</h2>
             <p class="card-text text-secondary">
